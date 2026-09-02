@@ -993,3 +993,43 @@ a.game-card {
 a.game-card .game-content {
     height:100%;
 }
+
+
+/* =========================
+   DEV COMMENTS
+   ========================= */
+
+.dev-comments-section {
+    border-top: 1px solid var(--line);
+}
+
+.dev-comments-wrap {
+    max-width: 900px;
+}
+
+.dev-comments-content {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 32px;
+}
+
+.dev-comments-content p {
+    color: var(--muted);
+    font-size: 17px;
+    margin: 0 0 20px;
+}
+
+.dev-comments-content p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+    .dev-comments-content {
+        padding: 22px;
+    }
+
+    .dev-comments-content p {
+        font-size: 16px;
+    }
+}
+
