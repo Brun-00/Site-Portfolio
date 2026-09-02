@@ -1,27 +1,826 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Games | Bruno Machado</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head>
-<body><header class="header"><div class="wrap header-inner"><a href="index.html" class="logo head"><span class="logo-mark"></span>BRUNO MACHADO</a><nav class="nav"><a href="index.html" class="">Home</a>
-<a href="games.html" class="active">Games</a>
-<a href="about.html" class="">About Me</a>
-<a href="cv.html" class="">CV</a>
-<a href="contact.html" class="">Contact</a></nav><button class="burger" aria-label="Open menu">☰</button></div></header>
-<main><section class="hero"><div class="wrap"><p class="eyebrow head">PORTFOLIO</p><h1 class="head">Games</h1><p>Explore my game projects, prototypes and ongoing work across different genres, engines and development stages.</p></div></section>
-<section class="section"><div class="wrap"><div class="filters reveal">
-<select data-filter="genre"><option value="all">All Genres</option><option>Adventure</option><option>Endless Runner</option><option>RPG</option><option>Prototype</option></select>
-<select data-filter="engine"><option value="all">All Engines</option><option>Unity</option><option>Unreal Engine</option></select>
-<select data-filter="status"><option value="all">All Statuses</option><option>Completed</option><option>In Development</option><option>Prototype</option></select>
-<select data-filter="year"><option value="all">All Years</option><option>2025</option><option>2026</option></select></div>
-<div class="grid game-grid"><a class="game-card reveal" href="3D_Adventure_Game.html" data-genre="Adventure" data-engine="Unity" data-status="In Development" data-year="2025">
-<div class="game-image">Game Screenshot Placeholder 1</div><div class="game-content"><h3 class="head">3D Adventure Game</h3>
-<div class="meta"><span class="tag">Adventure</span><span class="tag">Unity</span><span class="tag status">In Development</span><span class="tag">2025</span></div>
-<p>A 3D adventure project focused on exploration, gameplay systems and interactive experiences.</p></div></a><a class="game-card reveal" href="Endless_Runner.html" data-genre="Endless Runner" data-engine="Unity" data-status="Completed" data-year="2026">
-<div class="game-image">Game Screenshot Placeholder 2</div><div class="game-content"><h3 class="head">Endless Runner</h3>
-<div class="meta"><span class="tag">Endless Runner</span><span class="tag">Unity</span><span class="tag status">Completed</span><span class="tag">2026</span></div>
-<p>A fast-paced endless runner with procedural level generation, power-ups, collectibles and gameplay systems.</p></div></a><a class="game-card reveal" href="2D_Turn_Based_RPG.html" data-genre="RPG" data-engine="Unity" data-status="In Development" data-year="2026">
-<div class="game-image">Game Screenshot Placeholder 3</div><div class="game-content"><h3 class="head">2D Turn-Based RPG</h3>
-<div class="meta"><span class="tag">RPG</span><span class="tag">Unity</span><span class="tag status">In Development</span><span class="tag">2026</span></div>
-<p>An ongoing 2D turn-based RPG focused on combat systems, player progression and strategic gameplay.</p></div></a><a class="game-card reveal" href="Unreal_Prototype.html" data-genre="Prototype" data-engine="Unreal Engine" data-status="Prototype" data-year="2026">
-<div class="game-image">Game Screenshot Placeholder 4</div><div class="game-content"><h3 class="head">Game Prototype</h3>
-<div class="meta"><span class="tag">Prototype</span><span class="tag">Unreal Engine</span><span class="tag status">Prototype</span><span class="tag">2026</span></div>
-<p>A gameplay-focused prototype used to explore systems design, Blueprints and Unreal Engine workflows.</p></div></a></div></div></section></main><footer class="footer"><div class="wrap footer-inner"><div><strong class="head">BRUNO MACHADO</strong><div class="copyright">Game Designer &amp; Programmer</div></div><div class="footer-links"><a href="https://www.linkedin.com/in/bruno-machado-ab34a6379/" target="_blank" rel="noopener">LinkedIn</a><a href="#" target="_blank">GitHub</a><a href="mailto:YOUR_EMAIL_HERE">Email</a><a href="cv.html">CV</a><a href="games.html">Games</a></div><div class="copyright">© 2026 Bruno Machado. All rights reserved.</div></div></footer><script src="main.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>Games | Bruno Machado</title>
+
+    <!-- Fonts -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header">
+
+        <div class="wrap header-inner">
+
+            <a
+                href="index.html"
+                class="logo head"
+            >
+                <span class="logo-mark"></span>
+                BRUNO MACHADO
+            </a>
+
+
+            <!-- Navigation -->
+
+            <nav class="nav">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a
+                    href="games.html"
+                    class="active"
+                >
+                    Games
+                </a>
+
+                <a href="about.html">
+                    About Me
+                </a>
+
+                <a href="cv.html">
+                    CV
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </nav>
+
+
+            <!-- Mobile Menu -->
+
+            <button
+                class="burger"
+                aria-label="Open menu"
+            >
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main>
+
+
+        <!-- =========================
+             HERO
+        ========================== -->
+
+        <section class="hero">
+
+            <div class="wrap">
+
+                <p class="eyebrow head">
+                    PORTFOLIO
+                </p>
+
+                <h1 class="head">
+                    Games
+                </h1>
+
+                <p>
+                    Explore my game projects, prototypes and ongoing work
+                    across different genres, engines and development stages.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             GAMES
+        ========================== -->
+
+        <section class="section">
+
+            <div class="wrap">
+
+
+                <!-- =========================
+                     FILTERS
+                ========================== -->
+
+                <div class="filters reveal">
+
+
+                    <!-- Genre -->
+
+                    <select data-filter="genre">
+
+                        <option value="all">
+                            All Genres
+                        </option>
+
+                        <option>
+                            Adventure
+                        </option>
+
+                        <option>
+                            Endless Runner
+                        </option>
+
+                        <option>
+                            RPG
+                        </option>
+
+                        <option>
+                            2D-Platformer
+                        </option>
+
+                        <option>
+                            2D-Shooter
+                        </option>
+
+                        <option>
+                            Prototype
+                        </option>
+
+                        
+
+                    </select>
+
+
+
+                    <!-- Engine -->
+
+                    <select data-filter="engine">
+
+                        <option value="all">
+                            All Engines
+                        </option>
+
+                        <option>
+                            Unity
+                        </option>
+
+                        <option>
+                            Unreal Engine
+                        </option>
+
+                    </select>
+
+
+
+                    <!-- Status -->
+
+                    <select data-filter="status">
+
+                        <option value="all">
+                            All Statuses
+                        </option>
+
+                        <option>
+                            Completed
+                        </option>
+
+                        <option>
+                            In Development
+                        </option>
+
+                        <option>
+                            Prototype
+                        </option>
+
+                    </select>
+
+
+
+                    <!-- Year -->
+
+                    <select data-filter="year">
+
+                        <option value="all">
+                            All Years
+                        </option>
+
+                        <option>
+                            2025
+                        </option>
+
+                        <option>
+                            2026
+                        </option>
+
+                    </select>
+
+
+                </div>
+
+
+
+                <!-- =========================
+                     GAME GRID
+                ========================== -->
+
+                <div class="grid game-grid">
+
+                    <!-- =========================
+                         GAUNTLET
+                    ========================== -->
+
+                    <a
+                        class="game-card reveal"
+                        href="gauntlet.html"
+                        data-genre="RPG"
+                        data-engine="Unity"
+                        data-status="In Development"
+                        data-year="2026"
+                    >
+
+                        <!-- Image -->
+
+                        <div class="game-image">
+
+                            Game Screenshot Placeholder 3
+
+                        </div>
+
+
+                        <!-- Content -->
+
+                        <div class="game-content">
+
+                            <h3 class="head">
+                                GAUNTLET
+                            </h3>
+
+
+                            <!-- Metadata -->
+
+                            <div class="meta">
+
+                                <span class="tag">
+                                    RPG
+                                </span>
+
+                                <span class="tag">
+                                    Unity
+                                </span>
+
+                                <span class="tag status">
+                                    In Development
+                                </span>
+
+                                <span class="tag">
+                                    2026
+                                </span>
+
+                            </div>
+
+
+                            <!-- Description -->
+
+                            <p>
+                                My biggest project yet. GAUNTLET is a
+                                turn-based RPG with mechanics similar to
+                                UNDERTALE and Super Mario RPG.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                    <!-- =========================
+                         TELEVISIONED
+                    ========================== -->
+
+                    <a
+                        class="game-card reveal"
+                        href="televisioned.html"
+                        data-genre="2D-Platformer"
+                        data-engine="Unity"
+                        data-status="In Development"
+                        data-year="2026"
+                    >
+
+                        <!-- Image -->
+
+                        <div class="game-image">
+
+                            Game Screenshot Placeholder 3
+
+                        </div>
+
+
+                        <!-- Content -->
+
+                        <div class="game-content">
+
+                            <h3 class="head">
+                                TeleVisioned
+                            </h3>
+
+
+                            <!-- Metadata -->
+
+                            <div class="meta">
+
+                                <span class="tag">
+                                    2D-Platformer
+                                </span>
+
+                                <span class="tag">
+                                    Unity
+                                </span>
+
+                                <span class="tag status">
+                                    In Development
+                                </span>
+
+                                <span class="tag">
+                                    2026
+                                </span>
+
+                            </div>
+
+
+                            <!-- Description -->
+
+                            <p>
+                                TeleVisioned started as a experimental
+                                game mechanics showcase, but is now evolving
+                                into a complete game, even though it has been put
+                                on-hold.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- =========================
+                         ASTROKID3D
+                    ========================== -->
+
+                    <a
+                        class="game-card reveal"
+                        href="astrokid3d.html"
+                        data-genre="Adventure"
+                        data-engine="Unity"
+                        data-status="Completed"
+                        data-year="2026"
+                    >
+
+                        <!-- Image -->
+
+                        <div class="game-image">
+
+                            Game Screenshot Placeholder 1
+
+                        </div>
+
+
+                        <!-- Content -->
+
+                        <div class="game-content">
+
+                            <h3 class="head">
+                                AstroKid3D
+                            </h3>
+
+
+                            <!-- Metadata -->
+
+                            <div class="meta">
+
+                                <span class="tag">
+                                    Adventure
+                                </span>
+
+                                <span class="tag">
+                                    Unity
+                                </span>
+
+                                <span class="tag status">
+                                    Completed
+                                </span>
+
+                                <span class="tag">
+                                    2026
+                                </span>
+
+                            </div>
+
+
+                            <!-- Description -->
+
+                            <p>
+                                A short 3D adventure project focused on the 3D aspects 
+                                of the Unity Engine.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- =========================
+                         ASTROKIDGO
+                    ========================== -->
+
+                    <a
+                        class="game-card reveal"
+                        href="astrokidgo.html"
+                        data-genre="Endless Runner"
+                        data-engine="Unity"
+                        data-status="Completed"
+                        data-year="2026"
+                    >
+
+                        <!-- Image -->
+
+                        <div class="game-image">
+
+                            Game Screenshot Placeholder 2
+
+                        </div>
+
+
+                        <!-- Content -->
+
+                        <div class="game-content">
+
+                            <h3 class="head">
+                                AstroKidGO
+                            </h3>
+
+
+                            <!-- Metadata -->
+
+                            <div class="meta">
+
+                                <span class="tag">
+                                    Endless Runner
+                                </span>
+
+                                <span class="tag">
+                                    Unity
+                                </span>
+
+                                <span class="tag status">
+                                    Completed
+                                </span>
+
+                                <span class="tag">
+                                    2026
+                                </span>
+
+                            </div>
+
+
+                            <!-- Description -->
+
+                            <p>
+                                A "temple-run-style" endless runner with procedural
+                                level generation, power-ups and collectibles.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                    <!-- =========================
+                         ASTROKID2D
+                    ========================== -->
+
+                    <a
+                        class="game-card reveal"
+                        href="astrokid2d.html"
+                        data-genre="2D-Shooter"
+                        data-engine="Unity"
+                        data-status="Completed"
+                        data-year="2026"
+                    >
+
+                        <!-- Image -->
+
+                        <div class="game-image">
+
+                            Game Screenshot Placeholder 1
+
+                        </div>
+
+
+                        <!-- Content -->
+
+                        <div class="game-content">
+
+                            <h3 class="head">
+                                AstroKid2D
+                            </h3>
+
+
+                            <!-- Metadata -->
+
+                            <div class="meta">
+
+                                <span class="tag">
+                                    2D-Shooter
+                                </span>
+
+                                <span class="tag">
+                                    Unity
+                                </span>
+
+                                <span class="tag status">
+                                    Completed
+                                </span>
+
+                                <span class="tag">
+                                    2026
+                                </span>
+
+                            </div>
+
+
+                            <!-- Description -->
+
+                            <p>
+                                An endless 2D shooter game that explores
+                                a lot of interesting mechanics and game
+                                design choices.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                    <!-- =========================
+                         2PONG
+                    ========================== -->
+
+                    <a
+                        class="game-card reveal"
+                        href="pong.html"
+                        data-genre="Prototype"
+                        data-engine="Unity"
+                        data-status="Completed"
+                        data-year="2025"
+                    >
+
+                        <!-- Image -->
+
+                        <div class="game-image">
+
+                            Game Screenshot Placeholder 3
+
+                        </div>
+
+
+                        <!-- Content -->
+
+                        <div class="game-content">
+
+                            <h3 class="head">
+                                2PONG
+                            </h3>
+
+
+                            <!-- Metadata -->
+
+                            <div class="meta">
+
+                                <span class="tag">
+                                    Prototype
+                                </span>
+
+                                <span class="tag">
+                                    Unity
+                                </span>
+
+                                <span class="tag status">
+                                    Completed
+                                </span>
+
+                                <span class="tag">
+                                    2025
+                                </span>
+
+                            </div>
+
+
+                            <!-- Description -->
+
+                            <p>
+                                My first project ever, a simple game
+                                of the classic PONG with some customization
+                                and addons.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                    <!-- =========================
+                         UNREAL PROTOTYPE
+                    ========================== -->
+
+                    <a
+                        class="game-card reveal"
+                        href="Unreal_Prototype.html"
+                        data-genre="Prototype"
+                        data-engine="Unreal Engine"
+                        data-status="Prototype"
+                        data-year="2026"
+                    >
+
+                        <!-- Image -->
+
+                        <div class="game-image">
+
+                            Game Screenshot Placeholder 4
+
+                        </div>
+
+
+                        <!-- Content -->
+
+                        <div class="game-content">
+
+                            <h3 class="head">
+                                Unreal Game Prototype
+                            </h3>
+
+
+                            <!-- Metadata -->
+
+                            <div class="meta">
+
+                                <span class="tag">
+                                    Prototype
+                                </span>
+
+                                <span class="tag">
+                                    Unreal Engine
+                                </span>
+
+                                <span class="tag status">
+                                    Prototype
+                                </span>
+
+                                <span class="tag">
+                                    2026
+                                </span>
+
+                            </div>
+
+
+                            <!-- Description -->
+
+                            <p>
+                                This game is a compiled form of
+                                everything I learned during my Unreal Engine
+                                course, it includes everything I learned form
+                                game desing to AI to game mechanics.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <div class="wrap footer-inner">
+
+
+            <!-- Personal Info -->
+
+            <div>
+
+                <strong class="head">
+                    BRUNO MACHADO
+                </strong>
+
+                <div class="copyright">
+                    Game Designer &amp; Programmer
+                </div>
+
+            </div>
+
+
+
+            <!-- Links -->
+
+            <div class="footer-links">
+
+                <a
+                    href="https://www.linkedin.com/in/bruno-machado-ab34a6379/"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    LinkedIn
+                </a>
+
+
+                <a
+                    href="#"
+                    target="_blank"
+                >
+                    GitHub
+                </a>
+
+
+                <a href="mailto:YOUR_EMAIL_HERE">
+                    Email
+                </a>
+
+
+                <a href="cv.html">
+                    CV
+                </a>
+
+
+                <a href="games.html">
+                    Games
+                </a>
+
+            </div>
+
+
+
+            <!-- Copyright -->
+
+            <div class="copyright">
+
+                © 2026 Bruno Machado.
+                All rights reserved.
+
+            </div>
+
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- JavaScript -->
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>
