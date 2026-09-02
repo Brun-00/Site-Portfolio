@@ -27,3 +27,62 @@ document.addEventListener("DOMContentLoaded",()=>{
  }
 
 });
+
+/* =========================
+   GAME PAGE CAROUSELS
+   ========================= */
+document.querySelectorAll(".showcase-carousel").forEach(carousel => {
+    const track = carousel.querySelector(".showcase-track");
+    const slides = [...carousel.querySelectorAll(".showcase-slide")];
+    const prev = carousel.querySelector("[data-showcase-prev]");
+    const next = carousel.querySelector("[data-showcase-next]");
+    const dots = [...carousel.querySelectorAll(".showcase-dot")];
+    let index = 0;
+    let startX = null;
+
+    function update(newIndex) {
+        index = (newIndex + slides.length) % slides.length;
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+    }
+
+    prev?.addEventListener("click", () => update(index - 1));
+    next?.addEventListener("click", () => update(index + 1));
+    dots.forEach((dot, i) => dot.addEventListener("click", () => update(i)));
+
+    carousel.addEventListener("touchstart", e => {
+        startX = e.changedTouches[0].clientX;
+    }, {passive:true});
+
+    carousel.addEventListener("touchend", e => {
+        if (startX === null) return;
+        const delta = e.changedTouches[0].clientX - startX;
+        if (Math.abs(delta) > 45) update(delta < 0 ? index + 1 : index - 1);
+        startX = null;
+    }, {passive:true});
+});
+
+/* =========================
+   IMAGE LIGHTBOX
+   ========================= */
+const galleryItems = document.querySelectorAll("[data-lightbox-image]");
+const lightbox = document.querySelector(".media-lightbox");
+const lightboxImage = document.querySelector(".media-lightbox-content img");
+
+galleryItems.forEach(item => {
+    item.addEventListener("click", () => {
+        if (!lightbox || !lightboxImage) return;
+        const src = item.dataset.lightboxImage;
+        if (!src) return;
+        lightboxImage.src = src;
+        lightbox.classList.add("open");
+    });
+});
+
+document.querySelector(".lightbox-close")?.addEventListener("click", () => {
+    lightbox?.classList.remove("open");
+});
+
+lightbox?.addEventListener("click", e => {
+    if (e.target === lightbox) lightbox.classList.remove("open");
+});
