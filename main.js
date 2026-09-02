@@ -11,21 +11,60 @@ document.addEventListener("DOMContentLoaded",()=>{
  }));
  const form=document.querySelector(".contact-form");
  if(form) form.addEventListener("submit",e=>{e.preventDefault();alert("Thanks for your message! Connect this form to a backend or form service before publishing.");form.reset();});
- const carousel=document.querySelector("[data-carousel]");
- if(carousel){
-   const track=carousel.querySelector(".carousel-track");
-   const slides=[...carousel.querySelectorAll(".featured-slide")];
-   const prev=carousel.querySelector(".carousel-prev"), next=carousel.querySelector(".carousel-next"), dots=carousel.querySelector(".carousel-dots");
-   let current=0,startX=0;
-   const render=()=>{track.style.transform=`translateX(-${current*100}%)`; [...dots.children].forEach((d,i)=>d.classList.toggle("active",i===current));};
-   slides.forEach((_,i)=>{const d=document.createElement("button");d.className="carousel-dot";d.setAttribute("aria-label",`Go to slide ${i+1}`);d.addEventListener("click",()=>{current=i;render()});dots.appendChild(d)});
-   prev.addEventListener("click",()=>{current=(current-1+slides.length)%slides.length;render()});
-   next.addEventListener("click",()=>{current=(current+1)%slides.length;render()});
-   carousel.addEventListener("touchstart",e=>startX=e.touches[0].clientX,{passive:true});
-   carousel.addEventListener("touchend",e=>{const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>45){current=dx<0?(current+1)%slides.length:(current-1+slides.length)%slides.length;render()}});
-   render();
- }
 
+ document.querySelectorAll("[data-carousel]").forEach(carousel=>{
+   const track=carousel.querySelector(".carousel-track");
+   const slides=[...carousel.querySelectorAll(".featured-media-slide")];
+   const prev=carousel.querySelector(".carousel-prev");
+   const next=carousel.querySelector(".carousel-next");
+   const dots=carousel.querySelector(".carousel-dots");
+   if(!track || !slides.length || !prev || !next || !dots) return;
+
+   let current=0;
+   let startX=null;
+
+   function render(){
+     track.style.transform=`translateX(-${current*100}%)`;
+     [...dots.children].forEach((dot,i)=>dot.classList.toggle("active",i===current));
+   }
+
+   slides.forEach((_,i)=>{
+     const dot=document.createElement("button");
+     dot.type="button";
+     dot.className="carousel-dot";
+     dot.setAttribute("aria-label",`Go to media ${i+1}`);
+     dot.addEventListener("click",()=>{current=i;render();});
+     dots.appendChild(dot);
+   });
+
+   prev.addEventListener("click",()=>{
+     current=(current-1+slides.length)%slides.length;
+     render();
+   });
+
+   next.addEventListener("click",()=>{
+     current=(current+1)%slides.length;
+     render();
+   });
+
+   carousel.addEventListener("touchstart",e=>{
+     startX=e.touches[0].clientX;
+   },{passive:true});
+
+   carousel.addEventListener("touchend",e=>{
+     if(startX===null) return;
+     const delta=e.changedTouches[0].clientX-startX;
+     if(Math.abs(delta)>45){
+       current=delta<0
+         ? (current+1)%slides.length
+         : (current-1+slides.length)%slides.length;
+       render();
+     }
+     startX=null;
+   },{passive:true});
+
+   render();
+ });
 });
 
 /* =========================

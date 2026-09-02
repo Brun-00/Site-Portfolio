@@ -14,7 +14,197 @@
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}.reveal{opacity:1;transform:none}}
 
 /* Featured Games carousel */
-.featured-carousel{position:relative;margin-top:30px}.carousel-viewport{overflow:hidden;border:1px solid var(--line);background:var(--panel)}.carousel-track{display:flex;transition:transform .5s ease}.featured-slide{min-width:100%;display:grid;grid-template-columns:1.25fr .75fr;min-height:420px}.featured-media .game-image{height:100%;min-height:420px}.featured-info{padding:42px;display:flex;flex-direction:column;justify-content:center}.featured-info h3{font-size:clamp(30px,4vw,48px);margin:0 0 14px}.featured-info p{color:var(--muted);max-width:48ch}.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:46px;height:46px;border:1px solid var(--line);background:rgba(18,21,26,.92);color:var(--text);font-size:24px;cursor:pointer;transition:.2s}.carousel-btn:hover{border-color:var(--accent);color:var(--accent)}.carousel-prev{left:-23px}.carousel-next{right:-23px}.carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:18px}.carousel-dot{width:9px;height:9px;border-radius:50%;border:0;background:#49515d;cursor:pointer;padding:0}.carousel-dot.active{background:var(--accent);transform:scale(1.15)}@media(max-width:860px){.featured-slide{grid-template-columns:1fr}.featured-media .game-image{min-height:300px}.featured-info{padding:28px}.carousel-prev{left:10px}.carousel-next{right:10px}}@media(max-width:560px){.featured-media .game-image{min-height:220px}.featured-info{padding:22px}.carousel-btn{top:110px;width:40px;height:40px}.carousel-dots{margin-top:14px}}
+
+/* =========================
+   HOME — FEATURED GAMES
+   Three independent carousels, one for each game.
+   ========================= */
+
+.featured-project{
+    display:grid;
+    grid-template-columns:minmax(0,1.35fr) minmax(320px,.65fr);
+    gap:0;
+    margin-top:42px;
+    border:1px solid var(--line);
+    background:var(--panel);
+    min-height:430px;
+}
+
+.featured-project-reverse .featured-carousel{
+    order:2;
+}
+
+.featured-project-reverse .featured-info{
+    order:1;
+}
+
+.featured-carousel{
+    position:relative;
+    min-width:0;
+    background:var(--panel2);
+    overflow:visible;
+}
+
+.carousel-viewport{
+    height:100%;
+    min-height:430px;
+    overflow:hidden;
+}
+
+.carousel-track{
+    height:100%;
+    display:flex;
+    transition:transform .5s ease;
+}
+
+.featured-media-slide{
+    min-width:100%;
+    height:100%;
+    min-height:430px;
+}
+
+.featured-media-slide .game-image{
+    height:100%;
+    min-height:430px;
+}
+
+.featured-info{
+    padding:42px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    border-left:1px solid var(--line);
+}
+
+.featured-project-reverse .featured-info{
+    border-left:0;
+    border-right:1px solid var(--line);
+}
+
+.featured-info h3{
+    font-size:clamp(30px,4vw,48px);
+    margin:0 0 14px;
+}
+
+.featured-info p{
+    color:var(--muted);
+    max-width:48ch;
+}
+
+.featured-info .btn{
+    width:max-content;
+    margin-top:8px;
+}
+
+.carousel-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:5;
+    width:46px;
+    height:46px;
+    border:1px solid var(--line);
+    background:rgba(18,21,26,.94);
+    color:var(--text);
+    font-size:24px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.carousel-btn:hover{
+    border-color:var(--accent);
+    color:var(--accent);
+}
+
+.carousel-prev{left:-23px;}
+.carousel-next{right:-23px;}
+
+.carousel-dots{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:14px;
+    z-index:6;
+    display:flex;
+    justify-content:center;
+    gap:8px;
+}
+
+.carousel-dot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    border:0;
+    background:#49515d;
+    cursor:pointer;
+    padding:0;
+}
+
+.carousel-dot.active{
+    background:var(--accent);
+    transform:scale(1.15);
+}
+
+@media(max-width:860px){
+    .featured-project,
+    .featured-project-reverse{
+        grid-template-columns:1fr;
+    }
+
+    .featured-project-reverse .featured-carousel{
+        order:1;
+    }
+
+    .featured-project-reverse .featured-info{
+        order:2;
+    }
+
+    .featured-info,
+    .featured-project-reverse .featured-info{
+        border-left:0;
+        border-right:0;
+        border-top:1px solid var(--line);
+    }
+
+    .carousel-viewport,
+    .featured-media-slide,
+    .featured-media-slide .game-image{
+        min-height:320px;
+    }
+
+    .featured-info{
+        padding:30px;
+    }
+
+    .carousel-prev{left:10px;}
+    .carousel-next{right:10px;}
+}
+
+@media(max-width:560px){
+    .featured-project{
+        margin-top:28px;
+    }
+
+    .carousel-viewport,
+    .featured-media-slide,
+    .featured-media-slide .game-image{
+        min-height:230px;
+    }
+
+    .featured-info{
+        padding:22px;
+    }
+
+    .carousel-btn{
+        width:40px;
+        height:40px;
+    }
+
+    .carousel-dots{
+        bottom:10px;
+    }
+}
+
 
 /* =========================
    INDIVIDUAL GAME PAGES
@@ -387,4 +577,18 @@
         grid-column:span 1;
         min-height:260px;
     }
+}
+
+
+/* =========================
+   GAMES PAGE — CLICKABLE CARDS
+   ========================= */
+a.game-card{
+    display:block;
+    color:inherit;
+    text-decoration:none;
+    cursor:pointer;
+}
+a.game-card .game-content{
+    height:100%;
 }
