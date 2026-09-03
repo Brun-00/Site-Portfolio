@@ -125,3 +125,37 @@ document.querySelector(".lightbox-close")?.addEventListener("click", () => {
 lightbox?.addEventListener("click", e => {
     if (e.target === lightbox) lightbox.classList.remove("open");
 });
+
+async function loadComponent(elementId, filePath) {
+    const element = document.getElementById(elementId);
+
+    if (!element) {
+        return;
+    }
+
+    try {
+        const response = await fetch(filePath);
+
+        if (!response.ok) {
+            throw new Error(`Failed to load ${filePath}`);
+        }
+
+        element.innerHTML = await response.text();
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const isInsideGamesFolder = window.location.pathname.includes("/Games/");
+
+    const componentPath = isInsideGamesFolder
+        ? "../components/"
+        : "components/";
+
+    loadComponent("header", `${componentPath}header.html`);
+    loadComponent("footer", `${componentPath}footer.html`);
+
+});

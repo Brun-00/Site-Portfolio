@@ -11,19 +11,7 @@
 </head>
 <body>
 
-<header class="header">
-    <div class="wrap header-inner">
-        <a href="index.html" class="logo head"><span class="logo-mark"></span>BRUNO MACHADO</a>
-        <nav class="nav">
-            <a href="../index.html">Home</a>
-            <a href="../games.html" class="active">Games</a>
-            <a href="../about.html">About Me</a>
-            <a href="../cv.html">CV</a>
-            <a href="../contact.html">Contact</a>
-        </nav>
-        <button class="burger" aria-label="Open menu">☰</button>
-    </div>
-</header>
+<div id="header"></div>
 
 <main>
 
@@ -39,7 +27,7 @@
     <div class="wrap game-page-hero-content">
         <h1 class="game-page-title head">AstroKid2D</h1>
         <p class="game-summary">AstroKid2D is an endless 2D shooter that incorporates a lot of unique game mechanics
-            and game design choices. It's development was part of my Unity Engine Course.</p>
+            and game design choices. Its development was part of my Unity Engine Course.</p>
 
         <div class="meta">
             <span class="tag">2D-Shooter</span>
@@ -79,10 +67,14 @@
         <p class="eyebrow head">01 — OVERVIEW</p>
         <h2 class="section-title head">Game Description</h2>
         <p>AstroKid2D is a 2D Endless shooter that was part of my Unity Engine course at EBAC. It was my second project ever made and
-            incorporates simple but extremely important aspects of development with the Unity Engine, such as prefab management,character movement,
-            physics, animations, collectables, enemies, VFX, scriptable objects and SFX. The game was later updated at August 2026 to incorporate my
-            new art(mainly UI), music and sound effects.
-            .</p>
+            incorporates simple but extremely important aspects of game development with the Unity Engine, such as prefab management, character movement,
+            physics, animations, collectables, enemies, VFX, scriptable objects and SFX. The game was later updated in August 2026 to incorporate my
+            new art (mainly UI), music and sound effects.
+            </p>
+        <p>AstroKid2D was my first big introduction to the game development world, and though it may be simple, it made me fall in love even more with 
+            games as a whole. Also, not having to worry about most of the art used in the project was a big relief, and I am very thankful to the teachers and
+            staff at EBAC for letting me keep and use the art for personal projects.
+            </p>
     </div>
 </section>
 
@@ -141,7 +133,6 @@
     <div class="wrap">
         <p class="eyebrow head reveal">04 — MEDIA</p>
         <h2 class="section-title head reveal">Media Gallery</h2>
-        <p class="section-lead reveal">Use this area for screenshots, GIFs, gameplay clips, concept art and UI images.</p>
 
         <div class="media-gallery">
             <div class="media-item large reveal">
@@ -188,7 +179,7 @@
             <article class="process-step reveal">
                 <div class="process-number">02</div>
                 <div><h3 class="head">Side Mechanics</h3><p>After implementing the core gameplay of AstroKid2D, the focus was to improve the player experience
-                    with elements such as collectible coins, more active enemies and score and better UI.</p></div>
+                    with elements such as collectible coins, more active enemies, score and better UI.</p></div>
             </article>
             <article class="process-step reveal">
                 <div class="process-number">03</div>
@@ -201,6 +192,20 @@
                     to playtest my game, as it was my first small-medium-sized project. After a lot of bug-fixing and more testing, I was very content with the state 
                     the game was in, and decided to call it finished.</p></div>
             </article>
+        </div>
+    </div>
+</section>
+
+<!-- TECHNOLOGIES -->
+<section class="section">
+    <div class="wrap">
+        <p class="eyebrow head reveal">06 — TECHNOLOGY</p>
+        <h2 class="section-title head reveal">Technologies</h2>
+        <div class="grid tech-grid">
+            <div class="tech-card reveal">Unity</div>
+            <div class="tech-card reveal">C#</div>
+            <div class="tech-card reveal">Git/Github</div>
+            <div class="tech-card reveal">Aseprite, Bosca Ceoil & Bfxr</div>
         </div>
     </div>
 </section>
@@ -230,7 +235,30 @@
             </p>
 
             <p>
-                ...
+                Developing AstroKid2D was a blast, even if at first, it felt really overwhelming because of the amount of information 
+                and challenges I was given and had to learn and adapt to. I had a lot of difficulty understanding the concepts of
+                animation, physics and collisions at first, but this project made me understand a lot better, and I think that really 
+                shows in my later games.
+            </p>
+
+            <p>
+                After the course was over, I decided to make a few different design choices for the game, such as the number of simultaneous
+                enemies and their physics and actions towards the player, the behavior of the coins, and the movement of the player.
+                I concluded that, given the amount of space the player would be able to traverse, a double jump or a faster,
+                teleporting enemy would be too much to handle. That is why I went with simpler enemies and movement options,
+                such as a sprint.
+            </p>
+
+            <p>
+                I made the enemies in a way that they are infinitely expandable, so if I decided today that I wanted, for example, a harder enemy,
+                it would be as simple as changing some values and adding a new behavior to a copy of the original prefab.
+                As for the player, I felt like his behavior was sometimes too "stiff" or niche, but I ended up fixing that feeling in the later 3D
+                version of the AstroKid series.
+            </p>
+
+            <p>
+                My final conclusion about this game is that, even though it has some flaws and some "beginner" aspects to it,
+                I still think it has an inexplicable charm that I can't quite put my finger on.
             </p>
 
         </div>
@@ -241,22 +269,7 @@
 
 </main>
 
-<footer class="footer">
-    <div class="wrap footer-inner">
-        <div>
-            <strong class="head">BRUNO MACHADO</strong>
-            <div class="copyright">Game Designer &amp; Programmer</div>
-        </div>
-        <div class="footer-links">
-            <a href="https://www.linkedin.com/in/bruno-machado-ab34a6379/" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="#">GitHub</a>
-            <a href="mailto:YOUR_EMAIL_HERE">Email</a>
-            <a href="../cv.html">CV</a>
-            <a href="../games.html">Games</a>
-        </div>
-        <div class="copyright">© 2026 Bruno Machado. All rights reserved.</div>
-    </div>
-</footer>
+<div id="footer"></div>
 
 <div class="media-lightbox" aria-hidden="true">
     <div class="media-lightbox-content">

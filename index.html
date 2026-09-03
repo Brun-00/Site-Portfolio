@@ -1,123 +1,397 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Home | Bruno Machado</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css"></head>
-<body><header class="header"><div class="wrap header-inner"><a href="index.html" class="logo head"><span class="logo-mark"></span>BRUNO MACHADO</a><nav class="nav"><a href="index.html" class="active">Home</a>
-<a href="games.html" class="">Games</a>
-<a href="about.html" class="">About Me</a>
-<a href="cv.html" class="">CV</a>
-<a href="contact.html" class="">Contact</a></nav><button class="burger" aria-label="Open menu">☰</button></div></header>
-<main><section class="hero"><div class="wrap about-hero"><div class="reveal"><p class="eyebrow head">Game Designer &amp; Programmer</p><h1 class="head">Bruno Machado</h1><p>I’m a Brazilian Game Designer and Programmer passionate about creating interactive experiences, gameplay systems and memorable games. I combine technical development with creative design and am currently building my portfolio through personal and academic projects.</p><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="games.html">VIEW MY GAMES</a><a class="btn btn-secondary" href="cv.html">DOWNLOAD CV</a></div></div><div class="portrait reveal">YOUR PHOTO HERE</div></div></section>
-<section class="section">
-    <div class="wrap">
-        <h2 class="section-title head reveal">Featured Games</h2>
-        <p class="section-lead reveal">A selection of projects across different genres and development stages.</p>
+<!doctype html>
+<html lang="en">
 
-        <!-- FEATURED GAME 01 -->
-        <article class="featured-project reveal">
-            <div class="featured-carousel" data-carousel>
-                <button class="carousel-btn carousel-prev" aria-label="Previous media">←</button>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-                <div class="carousel-viewport">
-                    <div class="carousel-track">
-                        <div class="featured-media-slide">
-                            <div class="game-image">3D Adventure — Image / Video 01</div>
-                        </div>
-                        <div class="featured-media-slide">
-                            <div class="game-image">3D Adventure — Image / Video 02</div>
-                        </div>
-                        <div class="featured-media-slide">
-                            <div class="game-image">3D Adventure — Image / Video 03</div>
-                        </div>
+    <title>Home | Bruno Machado</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div id="header"></div>
+
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="wrap about-hero">
+
+                <div class="reveal">
+
+                    <p class="eyebrow head">
+                        Game Designer &amp; Programmer
+                    </p>
+
+                    <h1 class="head">
+                        Bruno Machado
+                    </h1>
+
+                    <p>
+                        I’m a Brazilian Game Designer and Programmer passionate about creating
+                        interactive experiences, gameplay systems and memorable games. I combine
+                        technical development with creative design and am currently building my
+                        portfolio through personal and academic projects.
+                    </p>
+
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+
+                        <a class="btn btn-primary" href="games.html">
+                            VIEW MY GAMES
+                        </a>
+
+                        <a class="btn btn-secondary" href="cv.html">
+                            DOWNLOAD CV
+                        </a>
+
                     </div>
+
                 </div>
 
-                <button class="carousel-btn carousel-next" aria-label="Next media">→</button>
-                <div class="carousel-dots" aria-label="3D Adventure media navigation"></div>
-            </div>
 
-            <div class="featured-info">
-                <p class="eyebrow head">FEATURED PROJECT</p>
-                <h3 class="head">3D Adventure Game</h3>
-                <div class="meta">
-                    <span class="tag">Adventure</span>
-                    <span class="tag">Unity</span>
-                    <span class="tag status">In Development</span>
+                <div class="portrait reveal">
+                    YOUR PHOTO HERE
                 </div>
-                <p>A 3D adventure project focused on exploration, interactive gameplay systems and memorable player experiences.</p>
-                <a class="btn btn-secondary" href="3D_Adventure_Game.html">VIEW PROJECT</a>
+
             </div>
-        </article>
 
-        <!-- FEATURED GAME 02 -->
-        <article class="featured-project featured-project-reverse reveal">
-            <div class="featured-carousel" data-carousel>
-                <button class="carousel-btn carousel-prev" aria-label="Previous media">←</button>
+        </section>
 
-                <div class="carousel-viewport">
-                    <div class="carousel-track">
-                        <div class="featured-media-slide">
-                            <div class="game-image">Endless Runner — Image / Video 01</div>
+
+        <!-- FEATURED GAMES -->
+        <section class="section">
+
+            <div class="wrap">
+
+                <h2 class="section-title head reveal">
+                    Featured Games
+                </h2>
+
+                <p class="section-lead reveal">
+                    A selection of projects across different genres and development stages.
+                </p>
+
+
+                <!-- FEATURED GAME 01 -->
+                <article class="featured-project reveal">
+
+                    <div class="featured-carousel" data-carousel>
+
+                        <button
+                            class="carousel-btn carousel-prev"
+                            aria-label="Previous media"
+                        >
+                            ←
+                        </button>
+
+
+                        <div class="carousel-viewport">
+
+                            <div class="carousel-track">
+
+                                <div class="featured-media-slide">
+                                    <div class="game-image">
+                                        3D Adventure — Image / Video 01
+                                    </div>
+                                </div>
+
+                                <div class="featured-media-slide">
+                                    <div class="game-image">
+                                        3D Adventure — Image / Video 02
+                                    </div>
+                                </div>
+
+                                <div class="featured-media-slide">
+                                    <div class="game-image">
+                                        3D Adventure — Image / Video 03
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </div>
-                        <div class="featured-media-slide">
-                            <div class="game-image">Endless Runner — Image / Video 02</div>
-                        </div>
-                        <div class="featured-media-slide">
-                            <div class="game-image">Endless Runner — Image / Video 03</div>
-                        </div>
+
+
+                        <button
+                            class="carousel-btn carousel-next"
+                            aria-label="Next media"
+                        >
+                            →
+                        </button>
+
+                        <div
+                            class="carousel-dots"
+                            aria-label="3D Adventure media navigation"
+                        ></div>
+
                     </div>
-                </div>
 
-                <button class="carousel-btn carousel-next" aria-label="Next media">→</button>
-                <div class="carousel-dots" aria-label="Endless Runner media navigation"></div>
-            </div>
 
-            <div class="featured-info">
-                <p class="eyebrow head">FEATURED PROJECT</p>
-                <h3 class="head">Endless Runner</h3>
-                <div class="meta">
-                    <span class="tag">Endless Runner</span>
-                    <span class="tag">Unity</span>
-                    <span class="tag status">Completed</span>
-                </div>
-                <p>A fast-paced endless runner featuring procedural gameplay, power-ups, collectibles and dynamic systems.</p>
-                <a class="btn btn-secondary" href="Endless_Runner.html">VIEW PROJECT</a>
-            </div>
-        </article>
+                    <div class="featured-info">
 
-        <!-- FEATURED GAME 03 -->
-        <article class="featured-project reveal">
-            <div class="featured-carousel" data-carousel>
-                <button class="carousel-btn carousel-prev" aria-label="Previous media">←</button>
+                        <p class="eyebrow head">
+                            FEATURED PROJECT
+                        </p>
 
-                <div class="carousel-viewport">
-                    <div class="carousel-track">
-                        <div class="featured-media-slide">
-                            <div class="game-image">2D Turn-Based RPG — Image / Video 01</div>
+                        <h3 class="head">
+                            3D Adventure Game
+                        </h3>
+
+                        <div class="meta">
+
+                            <span class="tag">
+                                Adventure
+                            </span>
+
+                            <span class="tag">
+                                Unity
+                            </span>
+
+                            <span class="tag status">
+                                In Development
+                            </span>
+
                         </div>
-                        <div class="featured-media-slide">
-                            <div class="game-image">2D Turn-Based RPG — Image / Video 02</div>
-                        </div>
-                        <div class="featured-media-slide">
-                            <div class="game-image">2D Turn-Based RPG — Image / Video 03</div>
-                        </div>
+
+                        <p>
+                            A 3D adventure project focused on exploration, interactive gameplay
+                            systems and memorable player experiences.
+                        </p>
+
+                        <a
+                            class="btn btn-secondary"
+                            href="3D_Adventure_Game.html"
+                        >
+                            VIEW PROJECT
+                        </a>
+
                     </div>
-                </div>
 
-                <button class="carousel-btn carousel-next" aria-label="Next media">→</button>
-                <div class="carousel-dots" aria-label="2D Turn-Based RPG media navigation"></div>
+                </article>
+
+
+                <!-- FEATURED GAME 02 -->
+                <article class="featured-project featured-project-reverse reveal">
+
+                    <div class="featured-carousel" data-carousel>
+
+                        <button
+                            class="carousel-btn carousel-prev"
+                            aria-label="Previous media"
+                        >
+                            ←
+                        </button>
+
+
+                        <div class="carousel-viewport">
+
+                            <div class="carousel-track">
+
+                                <div class="featured-media-slide">
+                                    <div class="game-image">
+                                        Endless Runner — Image / Video 01
+                                    </div>
+                                </div>
+
+                                <div class="featured-media-slide">
+                                    <div class="game-image">
+                                        Endless Runner — Image / Video 02
+                                    </div>
+                                </div>
+
+                                <div class="featured-media-slide">
+                                    <div class="game-image">
+                                        Endless Runner — Image / Video 03
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            class="carousel-btn carousel-next"
+                            aria-label="Next media"
+                        >
+                            →
+                        </button>
+
+                        <div
+                            class="carousel-dots"
+                            aria-label="Endless Runner media navigation"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="featured-info">
+
+                        <p class="eyebrow head">
+                            FEATURED PROJECT
+                        </p>
+
+                        <h3 class="head">
+                            Endless Runner
+                        </h3>
+
+                        <div class="meta">
+
+                            <span class="tag">
+                                Endless Runner
+                            </span>
+
+                            <span class="tag">
+                                Unity
+                            </span>
+
+                            <span class="tag status">
+                                Completed
+                            </span>
+
+                        </div>
+
+                        <p>
+                            A fast-paced endless runner featuring procedural gameplay,
+                            power-ups, collectibles and dynamic systems.
+                        </p>
+
+                        <a
+                            class="btn btn-secondary"
+                            href="Endless_Runner.html"
+                        >
+                            VIEW PROJECT
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- FEATURED GAME 03 -->
+                <article class="featured-project reveal">
+
+                    <div class="featured-carousel" data-carousel>
+
+                        <button
+                            class="carousel-btn carousel-prev"
+                            aria-label="Previous media"
+                        >
+                            ←
+                        </button>
+
+
+                        <div class="carousel-viewport">
+
+                            <div class="carousel-track">
+
+                                <div class="featured-media-slide">
+                                    <div class="game-image">
+                                        2D Turn-Based RPG — Image / Video 01
+                                    </div>
+                                </div>
+
+                                <div class="featured-media-slide">
+                                    <div class="game-image">
+                                        2D Turn-Based RPG — Image / Video 02
+                                    </div>
+                                </div>
+
+                                <div class="featured-media-slide">
+                                    <div class="game-image">
+                                        2D Turn-Based RPG — Image / Video 03
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            class="carousel-btn carousel-next"
+                            aria-label="Next media"
+                        >
+                            →
+                        </button>
+
+                        <div
+                            class="carousel-dots"
+                            aria-label="2D Turn-Based RPG media navigation"
+                        ></div>
+
+                    </div>
+
+
+                    <div class="featured-info">
+
+                        <p class="eyebrow head">
+                            FEATURED PROJECT
+                        </p>
+
+                        <h3 class="head">
+                            2D Turn-Based RPG
+                        </h3>
+
+                        <div class="meta">
+
+                            <span class="tag">
+                                RPG
+                            </span>
+
+                            <span class="tag">
+                                Unity
+                            </span>
+
+                            <span class="tag status">
+                                In Development
+                            </span>
+
+                        </div>
+
+                        <p>
+                            An ongoing 2D turn-based RPG focused on strategic combat,
+                            player progression and gameplay systems.
+                        </p>
+
+                        <a
+                            class="btn btn-secondary"
+                            href="2D_Turn_Based_RPG.html"
+                        >
+                            VIEW PROJECT
+                        </a>
+
+                    </div>
+
+                </article>
+
             </div>
 
-            <div class="featured-info">
-                <p class="eyebrow head">FEATURED PROJECT</p>
-                <h3 class="head">2D Turn-Based RPG</h3>
-                <div class="meta">
-                    <span class="tag">RPG</span>
-                    <span class="tag">Unity</span>
-                    <span class="tag status">In Development</span>
-                </div>
-                <p>An ongoing 2D turn-based RPG focused on strategic combat, player progression and gameplay systems.</p>
-                <a class="btn btn-secondary" href="2D_Turn_Based_RPG.html">VIEW PROJECT</a>
-            </div>
-        </article>
-    </div>
-</section></main><footer class="footer"><div class="wrap footer-inner"><div><strong class="head">BRUNO MACHADO</strong><div class="copyright">Game Designer &amp; Programmer</div></div><div class="footer-links"><a href="https://www.linkedin.com/in/bruno-machado-ab34a6379/" target="_blank" rel="noopener">LinkedIn</a><a href="#" target="_blank">GitHub</a><a href="mailto:YOUR_EMAIL_HERE">Email</a><a href="cv.html">CV</a><a href="games.html">Games</a></div><div class="copyright">© 2026 Bruno Machado. All rights reserved.</div></div></footer><script src="main.js"></script></body></html>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <div id="footer"></div>
+
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>
