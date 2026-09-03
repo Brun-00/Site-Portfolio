@@ -1,43 +1,56 @@
-/* =========================
-   MAIN INITIALIZATION
-   ========================= */
+/* =========================================================
+   MAIN.JS
+   Portfolio interactions
+   ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =========================
+    /* =====================================================
        MOBILE MENU
-       ========================= */
+       ===================================================== */
 
-    const burger = document.querySelector(".burger");
-    const nav = document.querySelector(".nav");
+    function initMobileMenu() {
+        const burger = document.querySelector(".burger");
+        const nav = document.querySelector(".nav");
 
-    if (burger && nav) {
+        if (!burger || !nav) return;
+
         burger.addEventListener("click", () => {
             nav.classList.toggle("open");
+        });
+
+        nav.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                nav.classList.remove("open");
+            });
         });
     }
 
 
-    /* =========================
+    /* =====================================================
        REVEAL ANIMATIONS
-       ========================= */
+       ===================================================== */
 
-    const revealElements = document.querySelectorAll(".reveal");
+    function initRevealAnimations() {
+        const revealElements = document.querySelectorAll(".reveal");
 
-    if (revealElements.length) {
+        if (!revealElements.length) return;
+
+        if (!("IntersectionObserver" in window)) {
+            revealElements.forEach((element) => {
+                element.classList.add("visible");
+            });
+            return;
+        }
 
         const observer = new IntersectionObserver(
             (entries) => {
-
                 entries.forEach((entry) => {
-
                     if (entry.isIntersecting) {
                         entry.target.classList.add("visible");
                         observer.unobserve(entry.target);
                     }
-
                 });
-
             },
             {
                 threshold: 0.12
@@ -50,52 +63,55 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
+    /* =====================================================
        GAME FILTERS
-       ========================= */
+       ===================================================== */
 
-    const selects = [...document.querySelectorAll("[data-filter]")];
-    const cards = [...document.querySelectorAll(".game-card")];
+    function initGameFilters() {
+        const selects = [...document.querySelectorAll("[data-filter]")];
+        const cards = [...document.querySelectorAll(".game-card")];
 
-    if (selects.length && cards.length) {
+        if (!selects.length || !cards.length) return;
 
         function filterGames() {
+            const filters = {};
 
-            const values = Object.fromEntries(
-                selects.map((select) => [
-                    select.dataset.filter,
-                    select.value
-                ])
-            );
+            selects.forEach((select) => {
+                filters[select.dataset.filter] = select.value;
+            });
 
             cards.forEach((card) => {
-
-                const matches = Object.entries(values).every(
+                const matches = Object.entries(filters).every(
                     ([key, value]) => {
-                        return value === "all" || card.dataset[key] === value;
+                        return (
+                            value === "all" ||
+                            card.dataset[key] === value
+                        );
                     }
                 );
 
-                card.style.display = matches ? "block" : "none";
+                card.style.display = matches ? "" : "none";
             });
         }
 
         selects.forEach((select) => {
             select.addEventListener("change", filterGames);
         });
+
+        filterGames();
     }
 
 
-    /* =========================
+    /* =====================================================
        CONTACT FORM
-       ========================= */
+       ===================================================== */
 
-    const form = document.querySelector(".contact-form");
+    function initContactForm() {
+        const form = document.querySelector(".contact-form");
 
-    if (form) {
+        if (!form) return;
 
         form.addEventListener("submit", (event) => {
-
             event.preventDefault();
 
             alert(
@@ -107,501 +123,742 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
+    /* =====================================================
        HOME FEATURED CAROUSELS
-       ========================= */
+       ===================================================== */
 
-    document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+    function initFeaturedCarousels() {
+        const carousels = document.querySelectorAll("[data-carousel]");
 
-        const track = carousel.querySelector(".carousel-track");
-        const slides = [
-            ...carousel.querySelectorAll(".featured-media-slide")
-        ];
+        carousels.forEach((carousel) => {
+            const track = carousel.querySelector(".carousel-track");
+            const slides = [
+                ...carousel.querySelectorAll(".featured-media-slide")
+            ];
 
-        const prevButton = carousel.querySelector(".carousel-prev");
-        const nextButton = carousel.querySelector(".carousel-next");
-        const dotsContainer = carousel.querySelector(".carousel-dots");
+            const previousButton =
+                carousel.querySelector(".carousel-prev");
 
-        if (
-            !track ||
-            !slides.length ||
-            !prevButton ||
-            !nextButton ||
-            !dotsContainer
-        ) {
-            return;
-        }
+            const nextButton =
+                carousel.querySelector(".carousel-next");
 
+            const dotsContainer =
+                carousel.querySelector(".carousel-dots");
 
-        let currentSlide = 0;
-        let startX = null;
+            if (
+                !track ||
+                !slides.length ||
+                !dotsContainer
+            ) {
+                return;
+            }
 
+            let currentSlide = 0;
+            let startX = null;
 
-        function updateCarousel() {
+            /* -------------------------------------------------
+               CREATE DOTS
+               ------------------------------------------------- */
 
-            track.style.transform =
-                `translateX(-${currentSlide * 100}%)`;
+            dotsContainer.innerHTML = "";
 
-            [...dotsContainer.children].forEach((dot, index) => {
-                dot.classList.toggle(
-                    "active",
-                    index === currentSlide
+            slides.forEach((_, index) => {
+                const dot = document.createElement("button");
+
+                dot.type = "button";
+                dot.className = "carousel-dot";
+
+                dot.setAttribute(
+                    "aria-label",
+                    `Go to media ${index + 1}`
                 );
+
+                dot.addEventListener("click", () => {
+                    goToSlide(index);
+                });
+
+                dotsContainer.appendChild(dot);
             });
-        }
+
+            const dots = [
+                ...dotsContainer.querySelectorAll(".carousel-dot")
+            ];
 
 
-        function goToSlide(index) {
+            /* -------------------------------------------------
+               UPDATE CAROUSEL
+               ------------------------------------------------- */
 
-            currentSlide =
-                (index + slides.length) % slides.length;
+            function updateCarousel() {
+                track.style.transform =
+                    `translate3d(-${currentSlide * 100}%, 0, 0)`;
 
-            updateCarousel();
-        }
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle(
+                        "active",
+                        index === currentSlide
+                    );
+                });
+            }
 
 
-        /* Create dots automatically */
+            /* -------------------------------------------------
+               CHANGE SLIDE
+               ------------------------------------------------- */
 
-        slides.forEach((_, index) => {
+            function goToSlide(index) {
+                currentSlide =
+                    (index + slides.length) % slides.length;
 
-            const dot = document.createElement("button");
+                updateCarousel();
+            }
 
-            dot.type = "button";
-            dot.className = "carousel-dot";
 
-            dot.setAttribute(
-                "aria-label",
-                `Go to media ${index + 1}`
+            /* -------------------------------------------------
+               BUTTONS
+               ------------------------------------------------- */
+
+            if (previousButton) {
+                previousButton.addEventListener(
+                    "click",
+                    (event) => {
+                        event.preventDefault();
+
+                        goToSlide(currentSlide - 1);
+                    }
+                );
+            }
+
+            if (nextButton) {
+                nextButton.addEventListener(
+                    "click",
+                    (event) => {
+                        event.preventDefault();
+
+                        goToSlide(currentSlide + 1);
+                    }
+                );
+            }
+
+
+            /* -------------------------------------------------
+               TOUCH / SWIPE
+               ------------------------------------------------- */
+
+            carousel.addEventListener(
+                "touchstart",
+                (event) => {
+                    startX =
+                        event.changedTouches[0].clientX;
+                },
+                {
+                    passive: true
+                }
             );
 
-            dot.addEventListener("click", () => {
-                goToSlide(index);
-            });
+            carousel.addEventListener(
+                "touchend",
+                (event) => {
+                    if (startX === null) return;
 
-            dotsContainer.appendChild(dot);
-        });
+                    const delta =
+                        event.changedTouches[0].clientX - startX;
 
+                    if (Math.abs(delta) > 45) {
+                        if (delta < 0) {
+                            goToSlide(currentSlide + 1);
+                        } else {
+                            goToSlide(currentSlide - 1);
+                        }
+                    }
 
-        prevButton.addEventListener("click", () => {
-            goToSlide(currentSlide - 1);
-        });
-
-
-        nextButton.addEventListener("click", () => {
-            goToSlide(currentSlide + 1);
-        });
-
-
-        /* Swipe support */
-
-        carousel.addEventListener(
-            "touchstart",
-            (event) => {
-                startX = event.touches[0].clientX;
-            },
-            { passive: true }
-        );
-
-
-        carousel.addEventListener(
-            "touchend",
-            (event) => {
-
-                if (startX === null) {
-                    return;
+                    startX = null;
+                },
+                {
+                    passive: true
                 }
+            );
 
-                const delta =
-                    event.changedTouches[0].clientX - startX;
+            updateCarousel();
+        });
+    }
 
-                if (Math.abs(delta) > 45) {
 
-                    if (delta < 0) {
-                        goToSlide(currentSlide + 1);
-                    } else {
+    /* =====================================================
+       GAMEPLAY SHOWCASE CAROUSEL
+       ===================================================== */
+
+    function initShowcaseCarousels() {
+        const carousels =
+            document.querySelectorAll(".showcase-carousel");
+
+        carousels.forEach((carousel) => {
+
+            const track =
+                carousel.querySelector(".showcase-track");
+
+            const slides = [
+                ...carousel.querySelectorAll(".showcase-slide")
+            ];
+
+            const previousButton =
+                carousel.querySelector("[data-showcase-prev]");
+
+            const nextButton =
+                carousel.querySelector("[data-showcase-next]");
+
+            const section =
+                carousel.closest("section");
+
+            if (!track || !slides.length) {
+                return;
+            }
+
+            let currentSlide = 0;
+            let startX = null;
+
+
+            /* -------------------------------------------------
+               FIND DOT CONTAINER
+               ------------------------------------------------- */
+
+            const dotsContainer = section
+                ? section.querySelector(".showcase-dots")
+                : null;
+
+            if (!dotsContainer) {
+                console.warn(
+                    "Showcase dots container not found."
+                );
+            }
+
+
+            /* -------------------------------------------------
+               CREATE DOTS
+               ------------------------------------------------- */
+
+            if (dotsContainer) {
+                dotsContainer.innerHTML = "";
+
+                slides.forEach((_, index) => {
+                    const dot =
+                        document.createElement("button");
+
+                    dot.type = "button";
+                    dot.className = "showcase-dot";
+
+                    dot.setAttribute(
+                        "aria-label",
+                        `Go to showcase video ${index + 1}`
+                    );
+
+                    dot.addEventListener("click", (event) => {
+                        event.preventDefault();
+
+                        goToSlide(index);
+                    });
+
+                    dotsContainer.appendChild(dot);
+                });
+            }
+
+            const dots = dotsContainer
+                ? [
+                    ...dotsContainer.querySelectorAll(
+                        ".showcase-dot"
+                    )
+                ]
+                : [];
+
+
+            /* -------------------------------------------------
+               PAUSE VIDEOS THAT ARE NOT ACTIVE
+               ------------------------------------------------- */
+
+            function pauseInactiveVideos() {
+                slides.forEach((slide, index) => {
+                    const video =
+                        slide.querySelector("video");
+
+                    if (!video) return;
+
+                    if (index !== currentSlide) {
+                        video.pause();
+                    }
+                });
+            }
+
+
+            /* -------------------------------------------------
+               UPDATE SHOWCASE
+               ------------------------------------------------- */
+
+            function updateShowcase() {
+
+                track.style.transform =
+                    `translate3d(-${currentSlide * 100}%, 0, 0)`;
+
+                dots.forEach((dot, index) => {
+
+                    dot.classList.toggle(
+                        "active",
+                        index === currentSlide
+                    );
+
+                    dot.setAttribute(
+                        "aria-current",
+                        index === currentSlide
+                            ? "true"
+                            : "false"
+                    );
+                });
+
+                pauseInactiveVideos();
+            }
+
+
+            /* -------------------------------------------------
+               GO TO SLIDE
+               ------------------------------------------------- */
+
+            function goToSlide(index) {
+
+                currentSlide =
+                    (index + slides.length) % slides.length;
+
+                updateShowcase();
+            }
+
+
+            /* -------------------------------------------------
+               PREVIOUS BUTTON
+               ------------------------------------------------- */
+
+            if (previousButton) {
+
+                previousButton.addEventListener(
+                    "click",
+                    (event) => {
+
+                        event.preventDefault();
+
                         goToSlide(currentSlide - 1);
                     }
-                }
-
-                startX = null;
-            },
-            { passive: true }
-        );
-
-
-        updateCarousel();
-    });
-
-
-    /* =========================
-       SHOWCASE CAROUSELS
-       ========================= */
-
-    document.querySelectorAll(".showcase-carousel").forEach((carousel) => {
-
-        const track = carousel.querySelector(".showcase-track");
-
-        const slides = [
-            ...carousel.querySelectorAll(".showcase-slide")
-        ];
-
-        const prevButton =
-            carousel.querySelector("[data-showcase-prev]");
-
-        const nextButton =
-            carousel.querySelector("[data-showcase-next]");
-
-        const section = carousel.closest("section");
-
-        const dots = section
-            ? [...section.querySelectorAll(".showcase-dot")]
-            : [];
-
-        if (
-            !track ||
-            !slides.length ||
-            !prevButton ||
-            !nextButton
-        ) {
-            return;
-        }
-
-
-        let currentSlide = 0;
-        let startX = null;
-
-
-        function pauseVideos() {
-
-            slides.forEach((slide) => {
-
-                const video = slide.querySelector("video");
-
-                if (video) {
-                    video.pause();
-                }
-
-            });
-        }
-
-
-        function updateShowcase() {
-
-            track.style.transform =
-                `translateX(-${currentSlide * 100}%)`;
-
-            dots.forEach((dot, index) => {
-
-                dot.classList.toggle(
-                    "active",
-                    index === currentSlide
                 );
-
-            });
-
-            pauseVideos();
-        }
+            }
 
 
-        function goToSlide(index) {
+            /* -------------------------------------------------
+               NEXT BUTTON
+               ------------------------------------------------- */
 
-            currentSlide =
-                (index + slides.length) % slides.length;
+            if (nextButton) {
+
+                nextButton.addEventListener(
+                    "click",
+                    (event) => {
+
+                        event.preventDefault();
+
+                        goToSlide(currentSlide + 1);
+                    }
+                );
+            }
+
+
+            /* -------------------------------------------------
+               SWIPE
+               ------------------------------------------------- */
+
+            carousel.addEventListener(
+                "touchstart",
+                (event) => {
+
+                    startX =
+                        event.changedTouches[0].clientX;
+                },
+                {
+                    passive: true
+                }
+            );
+
+
+            carousel.addEventListener(
+                "touchend",
+                (event) => {
+
+                    if (startX === null) return;
+
+                    const delta =
+                        event.changedTouches[0].clientX -
+                        startX;
+
+                    if (Math.abs(delta) > 45) {
+
+                        if (delta < 0) {
+                            goToSlide(currentSlide + 1);
+                        } else {
+                            goToSlide(currentSlide - 1);
+                        }
+                    }
+
+                    startX = null;
+                },
+                {
+                    passive: true
+                }
+            );
+
 
             updateShowcase();
-        }
-
-
-        /* Arrow controls */
-
-        prevButton.addEventListener("click", () => {
-            goToSlide(currentSlide - 1);
         });
+    }
 
 
-        nextButton.addEventListener("click", () => {
-            goToSlide(currentSlide + 1);
-        });
+    /* =====================================================
+       MEDIA GALLERY CAROUSEL
+       ===================================================== */
+
+    function initMediaCarousels() {
+
+        const carousels =
+            document.querySelectorAll(".media-carousel");
+
+        carousels.forEach((carousel) => {
+
+            const track =
+                carousel.querySelector(".media-track");
+
+            const slides = [
+                ...carousel.querySelectorAll(".media-slide")
+            ];
+
+            const previousButton =
+                carousel.querySelector("[data-media-prev]");
+
+            const nextButton =
+                carousel.querySelector("[data-media-next]");
+
+            const section =
+                carousel.closest("section");
+
+            if (!track || !slides.length) {
+                return;
+            }
+
+            let currentSlide = 0;
+            let startX = null;
 
 
-        /* Dot controls */
+            /* -------------------------------------------------
+               DOT CONTAINER
+               ------------------------------------------------- */
 
-        dots.forEach((dot, index) => {
-
-            dot.addEventListener("click", () => {
-                goToSlide(index);
-            });
-
-        });
+            const dotsContainer = section
+                ? section.querySelector(".media-dots")
+                : null;
 
 
-        /* Swipe support */
+            /* -------------------------------------------------
+               CREATE DOTS
+               ------------------------------------------------- */
 
-        carousel.addEventListener(
-            "touchstart",
-            (event) => {
-                startX = event.touches[0].clientX;
-            },
-            { passive: true }
-        );
+            if (dotsContainer) {
+
+                dotsContainer.innerHTML = "";
+
+                slides.forEach((_, index) => {
+
+                    const dot =
+                        document.createElement("button");
+
+                    dot.type = "button";
+                    dot.className = "media-dot";
+
+                    dot.setAttribute(
+                        "aria-label",
+                        `Go to gallery image ${index + 1}`
+                    );
+
+                    dot.addEventListener(
+                        "click",
+                        (event) => {
+
+                            event.preventDefault();
+
+                            goToSlide(index);
+                        }
+                    );
+
+                    dotsContainer.appendChild(dot);
+                });
+            }
 
 
-        carousel.addEventListener(
-            "touchend",
-            (event) => {
+            const dots = dotsContainer
+                ? [
+                    ...dotsContainer.querySelectorAll(
+                        ".media-dot"
+                    )
+                ]
+                : [];
 
-                if (startX === null) {
-                    return;
-                }
 
-                const delta =
-                    event.changedTouches[0].clientX - startX;
+            /* -------------------------------------------------
+               UPDATE MEDIA CAROUSEL
+               ------------------------------------------------- */
 
-                if (Math.abs(delta) > 45) {
+            function updateMedia() {
 
-                    if (delta < 0) {
-                        goToSlide(currentSlide + 1);
-                    } else {
+                track.style.transform =
+                    `translate3d(-${currentSlide * 100}%, 0, 0)`;
+
+                dots.forEach((dot, index) => {
+
+                    dot.classList.toggle(
+                        "active",
+                        index === currentSlide
+                    );
+
+                    dot.setAttribute(
+                        "aria-current",
+                        index === currentSlide
+                            ? "true"
+                            : "false"
+                    );
+                });
+            }
+
+
+            /* -------------------------------------------------
+               GO TO SLIDE
+               ------------------------------------------------- */
+
+            function goToSlide(index) {
+
+                currentSlide =
+                    (index + slides.length) % slides.length;
+
+                updateMedia();
+            }
+
+
+            /* -------------------------------------------------
+               PREVIOUS BUTTON
+               ------------------------------------------------- */
+
+            if (previousButton) {
+
+                previousButton.addEventListener(
+                    "click",
+                    (event) => {
+
+                        event.preventDefault();
+
                         goToSlide(currentSlide - 1);
                     }
-
-                }
-
-                startX = null;
-            },
-            { passive: true }
-        );
-
-
-        updateShowcase();
-    });
-
-
-    /* =========================
-       MEDIA GALLERY CAROUSELS
-       ========================= */
-
-    document.querySelectorAll(".media-carousel").forEach((carousel) => {
-
-        const track = carousel.querySelector(".media-track");
-
-        const slides = [
-            ...carousel.querySelectorAll(".media-slide")
-        ];
-
-        const prevButton =
-            carousel.querySelector("[data-media-prev]");
-
-        const nextButton =
-            carousel.querySelector("[data-media-next]");
-
-        const section = carousel.closest("section");
-
-        const dots = section
-            ? [...section.querySelectorAll(".media-dot")]
-            : [];
-
-        if (
-            !track ||
-            !slides.length ||
-            !prevButton ||
-            !nextButton
-        ) {
-            return;
-        }
-
-
-        let currentSlide = 0;
-        let startX = null;
-
-
-        function updateMedia() {
-
-            track.style.transform =
-                `translateX(-${currentSlide * 100}%)`;
-
-            dots.forEach((dot, index) => {
-
-                dot.classList.toggle(
-                    "active",
-                    index === currentSlide
                 );
-
-            });
-        }
+            }
 
 
-        function goToSlide(index) {
+            /* -------------------------------------------------
+               NEXT BUTTON
+               ------------------------------------------------- */
 
-            currentSlide =
-                (index + slides.length) % slides.length;
+            if (nextButton) {
+
+                nextButton.addEventListener(
+                    "click",
+                    (event) => {
+
+                        event.preventDefault();
+
+                        goToSlide(currentSlide + 1);
+                    }
+                );
+            }
+
+
+            /* -------------------------------------------------
+               SWIPE
+               ------------------------------------------------- */
+
+            carousel.addEventListener(
+                "touchstart",
+                (event) => {
+
+                    startX =
+                        event.changedTouches[0].clientX;
+                },
+                {
+                    passive: true
+                }
+            );
+
+
+            carousel.addEventListener(
+                "touchend",
+                (event) => {
+
+                    if (startX === null) return;
+
+                    const delta =
+                        event.changedTouches[0].clientX -
+                        startX;
+
+                    if (Math.abs(delta) > 45) {
+
+                        if (delta < 0) {
+                            goToSlide(currentSlide + 1);
+                        } else {
+                            goToSlide(currentSlide - 1);
+                        }
+                    }
+
+                    startX = null;
+                },
+                {
+                    passive: true
+                }
+            );
+
 
             updateMedia();
-        }
-
-
-        /* Arrow controls */
-
-        prevButton.addEventListener("click", () => {
-            goToSlide(currentSlide - 1);
         });
+    }
 
 
-        nextButton.addEventListener("click", () => {
-            goToSlide(currentSlide + 1);
-        });
+    /* =====================================================
+       IMAGE LIGHTBOX
+       ===================================================== */
 
+    function initLightbox() {
 
-        /* Dot controls */
+        const galleryItems =
+            document.querySelectorAll(
+                "[data-lightbox-image]"
+            );
 
-        dots.forEach((dot, index) => {
+        const lightbox =
+            document.querySelector(".media-lightbox");
 
-            dot.addEventListener("click", () => {
-                goToSlide(index);
-            });
+        const lightboxImage =
+            document.querySelector(
+                ".media-lightbox-content img"
+            );
 
-        });
+        const lightboxClose =
+            document.querySelector(".lightbox-close");
 
-
-        /* Swipe support */
-
-        carousel.addEventListener(
-            "touchstart",
-            (event) => {
-                startX = event.touches[0].clientX;
-            },
-            { passive: true }
-        );
-
-
-        carousel.addEventListener(
-            "touchend",
-            (event) => {
-
-                if (startX === null) {
-                    return;
-                }
-
-                const delta =
-                    event.changedTouches[0].clientX - startX;
-
-                if (Math.abs(delta) > 45) {
-
-                    if (delta < 0) {
-                        goToSlide(currentSlide + 1);
-                    } else {
-                        goToSlide(currentSlide - 1);
-                    }
-
-                }
-
-                startX = null;
-            },
-            { passive: true }
-        );
-
-
-        updateMedia();
-    });
-
-});
-
-
-/* =========================
-   IMAGE LIGHTBOX
-   ========================= */
-
-const galleryItems =
-    document.querySelectorAll("[data-lightbox-image]");
-
-const lightbox =
-    document.querySelector(".media-lightbox");
-
-const lightboxImage =
-    document.querySelector(".media-lightbox-content img");
-
-
-galleryItems.forEach((item) => {
-
-    item.addEventListener("click", () => {
 
         if (!lightbox || !lightboxImage) {
             return;
         }
 
-        const src =
-            item.dataset.lightboxImage;
 
-        if (!src) {
-            return;
-        }
+        galleryItems.forEach((item) => {
 
-        lightboxImage.src = src;
+            item.addEventListener("click", () => {
 
-        lightbox.classList.add("open");
-    });
+                const src =
+                    item.dataset.lightboxImage;
 
-});
+                if (!src) return;
 
+                lightboxImage.src = src;
 
-document
-    .querySelector(".lightbox-close")
-    ?.addEventListener("click", () => {
-
-        lightbox?.classList.remove("open");
-
-    });
+                lightbox.classList.add("open");
+            });
+        });
 
 
-lightbox?.addEventListener("click", (event) => {
+        if (lightboxClose) {
 
-    if (event.target === lightbox) {
-        lightbox.classList.remove("open");
-    }
+            lightboxClose.addEventListener(
+                "click",
+                () => {
 
-});
-
-
-/* =========================
-   HEADER + FOOTER COMPONENTS
-   ========================= */
-
-async function loadComponent(elementId, filePath) {
-
-    const element =
-        document.getElementById(elementId);
-
-    if (!element) {
-        return;
-    }
-
-
-    try {
-
-        const response =
-            await fetch(filePath);
-
-        if (!response.ok) {
-            throw new Error(
-                `Failed to load ${filePath}`
+                    lightbox.classList.remove("open");
+                }
             );
         }
 
-        element.innerHTML =
-            await response.text();
 
-    } catch (error) {
+        lightbox.addEventListener(
+            "click",
+            (event) => {
 
-        console.error(error);
+                if (event.target === lightbox) {
 
+                    lightbox.classList.remove(
+                        "open"
+                    );
+                }
+            }
+        );
+
+
+        document.addEventListener(
+            "keydown",
+            (event) => {
+
+                if (event.key === "Escape") {
+
+                    lightbox.classList.remove(
+                        "open"
+                    );
+                }
+            }
+        );
     }
-}
 
 
-document.addEventListener("DOMContentLoaded", () => {
+    /* =====================================================
+       LOAD HEADER / FOOTER
+       ===================================================== */
+
+    async function loadComponent(
+        elementId,
+        filePath
+    ) {
+
+        const element =
+            document.getElementById(elementId);
+
+        if (!element) return;
+
+        try {
+
+            const response =
+                await fetch(filePath);
+
+            if (!response.ok) {
+
+                throw new Error(
+                    `Failed to load ${filePath} (${response.status})`
+                );
+            }
+
+            element.innerHTML =
+                await response.text();
+
+        } catch (error) {
+
+            console.error(error);
+        }
+    }
+
+
+    /* =====================================================
+       PATH DETECTION
+       ===================================================== */
+
+    const currentPath =
+        window.location.pathname
+            .replace(/\\/g, "/");
 
     const isInsideGamesFolder =
-        window.location.pathname.includes("/Games/");
+        currentPath.includes("/Games/");
 
     const componentPath =
         isInsideGamesFolder
@@ -609,14 +866,44 @@ document.addEventListener("DOMContentLoaded", () => {
             : "components/";
 
 
-    loadComponent(
-        "header",
-        `${componentPath}header.html`
-    );
+    /* =====================================================
+       LOAD COMPONENTS
+       ===================================================== */
 
-    loadComponent(
-        "footer",
-        `${componentPath}footer.html`
-    );
+    Promise.all([
+        loadComponent(
+            "header",
+            `${componentPath}header.html`
+        ),
+
+        loadComponent(
+            "footer",
+            `${componentPath}footer.html`
+        )
+    ]).finally(() => {
+
+        /*
+         * The mobile menu depends on the header
+         * being loaded into the page first.
+         */
+        initMobileMenu();
+    });
+
+
+    /* =====================================================
+       INITIALIZE PAGE FEATURES
+       ===================================================== */
+
+    initRevealAnimations();
+    initGameFilters();
+    initContactForm();
+
+    initFeaturedCarousels();
+
+    initShowcaseCarousels();
+
+    initMediaCarousels();
+
+    initLightbox();
 
 });
