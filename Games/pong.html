@@ -11,19 +11,7 @@
 </head>
 <body>
 
-<header class="header">
-    <div class="wrap header-inner">
-        <a href="../index.html" class="logo head"><span class="logo-mark"></span>BRUNO MACHADO</a>
-        <nav class="nav">
-            <a href="../index.html">Home</a>
-            <a href="../games.html" class="active">Games</a>
-            <a href="../about.html">About Me</a>
-            <a href="../cv.html">CV</a>
-            <a href="../contact.html">Contact</a>
-        </nav>
-        <button class="burger" aria-label="Open menu">☰</button>
-    </div>
-</header>
+<div id="header"></div>
 
 <main>
 
@@ -39,10 +27,13 @@
     <div class="wrap game-page-hero-content">
         <p class="eyebrow head">GAME PROJECT</p>
         <h1 class="game-page-title head">2PONG</h1>
-        <p class="game-summary">My first game ever! This is a classic 2-player Pong experience, with cool features I implemented such as player scores and skins.</p>
+        <p class="game-summary">
+            My first game ever! A classic 2-player Pong experience with a few extra features
+            I added myself, such as score tracking and paddle skins.
+        </p>
 
         <div class="meta">
-            <span class="tag">Prototype</span>
+            <span class="tag">Arcade</span>
             <span class="tag">Unity</span>
             <span class="tag status">Completed</span>
         </div>
@@ -55,15 +46,11 @@
         <div class="game-info-grid reveal">
             <div class="game-info-item">
                 <div class="game-info-label">Genre</div>
-                <div class="game-info-value">Prototype</div>
+                <div class="game-info-value">Arcade</div>
             </div>
             <div class="game-info-item">
                 <div class="game-info-label">Engine</div>
                 <div class="game-info-value">Unity</div>
-            </div>
-            <div class="game-info-item">
-                <div class="game-info-label">Platform</div>
-                <div class="game-info-value">PC</div>
             </div>
             <div class="game-info-item">
                 <div class="game-info-label">Status</div>
@@ -71,11 +58,7 @@
             </div>
             <div class="game-info-item">
                 <div class="game-info-label">Development Period</div>
-                <div class="game-info-value">November/2025 — Decemver/2025</div>
-            </div>
-            <div class="game-info-item">
-                <div class="game-info-label">My Role</div>
-                <div class="game-info-value">GAME DESIGNER &amp; PROGRAMMER</div>
+                <div class="game-info-value">NOV/2025 — DEC/2025</div>
             </div>
         </div>
     </div>
@@ -86,8 +69,17 @@
     <div class="wrap game-copy reveal">
         <p class="eyebrow head">01 — OVERVIEW</p>
         <h2 class="section-title head">Game Description</h2>
-        <p>Describe what the game is, the main concept, the gameplay loop and the player's objective. This is the main place to explain what makes the project interesting and what experience you wanted to create.</p>
-        <p>You can duplicate this paragraph and add more detail depending on the complexity of each project.</p>
+        <p>
+            2PONG is a simple Pong-inspired game and the very first game I ever made.
+            The main idea was to recreate the classic Pong experience while adding a few
+            extra features of my own, such as player score tracking and different paddle skins.
+        </p>
+
+        <p>
+            The project was mainly about learning the basics of game development and getting
+            comfortable with Unity and C#. It is a very simple game compared to my later projects,
+            but it was the starting point that made me want to keep making games.
+        </p>
     </div>
 </section>
 
@@ -96,14 +88,13 @@
     <div class="wrap">
         <p class="eyebrow head reveal">02 — MY WORK</p>
         <h2 class="section-title head reveal">My Contributions</h2>
-        <p class="section-lead reveal">Focus this section on what you personally designed, programmed, created and improved.</p>
 
         <div class="grid contribution-grid">
-            <article class="contribution-card reveal"><h3 class="head">Programming</h3><p>Gameplay systems, player mechanics, AI, interactions, tools and other technical implementation.</p></article>
-            <article class="contribution-card reveal"><h3 class="head">Game Design</h3><p>Gameplay ideas, mechanics, systems, balancing, player experience and design iteration.</p></article>
+            <article class="contribution-card reveal"><h3 class="head">Programming</h3><p>Gameplay systems, player mechanics & interactions.</p></article>
+            <article class="contribution-card reveal"><h3 class="head">Game Design</h3><p>Balancing, player experience and design iteration.</p></article>
             <article class="contribution-card reveal"><h3 class="head">UI / UX</h3><p>Interface layouts, usability, HUD design, menus and visual communication.</p></article>
-            <article class="contribution-card reveal"><h3 class="head">Audio</h3><p>Music, sound effects, audio feedback and implementation when applicable.</p></article>
-            <article class="contribution-card reveal"><h3 class="head">Prototyping</h3><p>Rapid experimentation and validation of mechanics and systems before refinement.</p></article>
+            <article class="contribution-card reveal"><h3 class="head">Audio</h3><p>Music & sound effects.</p></article>
+            <article class="contribution-card reveal"><h3 class="head">Art</h3><p>Pixelart used in all the UIs.</p></article>
             <article class="contribution-card reveal"><h3 class="head">Testing &amp; Debugging</h3><p>Playtesting, bug fixing, iteration and improving the final gameplay experience.</p></article>
         </div>
     </div>
@@ -148,7 +139,6 @@
     <div class="wrap">
         <p class="eyebrow head reveal">04 — MEDIA</p>
         <h2 class="section-title head reveal">Media Gallery</h2>
-        <p class="section-lead reveal">Use this area for screenshots, GIFs, gameplay clips, concept art and UI images.</p>
 
         <div class="media-gallery">
             <div class="media-item large reveal">
@@ -189,19 +179,50 @@
         <div class="process-list">
             <article class="process-step reveal">
                 <div class="process-number">01</div>
-                <div><h3 class="head">Concept</h3><p>Explain the initial idea and what inspired the project.</p></div>
+                <div>
+                    <h3 class="head">First Steps and Core Mechanics</h3>
+                    <p>
+                        As it was my first ever game, I first tried to become familiar with the Unity Engine UI
+                        and its features. After that, I started implementing the core features, such as the paddles,
+                        the ball, and the walls.
+                    </p>
+                </div>
             </article>
+
             <article class="process-step reveal">
                 <div class="process-number">02</div>
-                <div><h3 class="head">Prototype</h3><p>Describe how the core gameplay or systems were tested early in development.</p></div>
+                <div>
+                    <h3 class="head">Gameplay Cycle</h3>
+                    <p>
+                        After I had the assets finished, I worked on the gameplay cycle. I decided to stick with
+                        the classic best-of-3 win condition and made the game return to the menu after the match was finished.
+                    </p>
+                </div>
             </article>
+
             <article class="process-step reveal">
                 <div class="process-number">03</div>
-                <div><h3 class="head">Iteration</h3><p>Show important changes, technical challenges and design decisions.</p></div>
+                <div>
+                    <h3 class="head">Side Mechanics &amp; Polishing</h3>
+                    <p>
+                        After the core gameplay cycle was up and running, I decided to add some extra features,
+                        such as player skins and names, score tracking, SFX, and music. These additions made the
+                        game feel much more alive. Then, it was time to polish everything, including the code,
+                        project organization, player controller, and UI.
+                    </p>
+                </div>
             </article>
+
             <article class="process-step reveal">
                 <div class="process-number">04</div>
-                <div><h3 class="head">Current Result</h3><p>Explain the current state of the project and what you learned from it.</p></div>
+                <div>
+                    <h3 class="head">Testing and Final Result</h3>
+                    <p>
+                        Thankfully, the testing phase was not stressful at all. Since Pong is such a simple game,
+                        testing everything I needed was fairly straightforward. Soon after, I had the final result
+                        and the finished build.
+                    </p>
+                </div>
             </article>
         </div>
     </div>
@@ -213,32 +234,55 @@
         <p class="eyebrow head reveal">06 — TECHNOLOGY</p>
         <h2 class="section-title head reveal">Technologies</h2>
         <div class="grid tech-grid">
-            <div class="tech-card reveal">ENGINE</div>
-            <div class="tech-card reveal">PROGRAMMING LANGUAGE</div>
-            <div class="tech-card reveal">VERSION CONTROL</div>
-            <div class="tech-card reveal">OTHER TOOLS</div>
+            <div class="tech-card reveal">Unity</div>
+            <div class="tech-card reveal">C#</div>
+            <div class="tech-card reveal">Git/Github</div>
+            <div class="tech-card reveal">Aseprite, Bosca Ceoil & Bfxr</div>
         </div>
     </div>
 </section>
 
+<!-- =========================
+     DEV COMMENTS
+========================= -->
+
+<section class="section dev-comments-section">
+
+    <div class="wrap dev-comments-wrap">
+
+        <p class="eyebrow head reveal">
+            07 — DEV COMMENTS
+        </p>
+
+        <h2 class="section-title head reveal">
+            Dev Comments
+        </h2>
+
+        <div class="dev-comments-content reveal">
+
+            <p>
+                2PONG was where everything started for me. At the time, even making a paddle move
+                correctly or getting the ball to bounce the way I wanted felt like a big achievement.
+                It was a very simple project, but it was also the first time I got to see something
+                I made actually work as a game.
+            </p>
+
+            <p>
+                Looking back at it now, there is obviously a lot I would do differently, but I think
+                that is part of what makes this project special to me. It was my first step into game
+                development, and without this little Pong clone, I probably wouldn't have ended up
+                making the games that came after it.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
 </main>
 
-<footer class="footer">
-    <div class="wrap footer-inner">
-        <div>
-            <strong class="head">BRUNO MACHADO</strong>
-            <div class="copyright">Game Designer &amp; Programmer</div>
-        </div>
-        <div class="footer-links">
-            <a href="https://www.linkedin.com/in/bruno-machado-ab34a6379/" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="#">GitHub</a>
-            <a href="mailto:YOUR_EMAIL_HERE">Email</a>
-            <a href="../cv.html">CV</a>
-            <a href="../games.html">Games</a>
-        </div>
-        <div class="copyright">© 2026 Bruno Machado. All rights reserved.</div>
-    </div>
-</footer>
+<div id="footer"></div>
 
 <div class="media-lightbox" aria-hidden="true">
     <div class="media-lightbox-content">
