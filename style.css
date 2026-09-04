@@ -993,3 +993,135 @@ a.game-card {
 a.game-card .game-content {
     height:100%;
 }
+/* =========================
+   MEDIA GALLERY CAROUSEL
+   ========================= */
+
+.media-carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--panel);
+}
+
+.media-track {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    transition: transform 0.55s ease;
+}
+
+.media-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
+    position: relative;
+    background: var(--panel2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.media-slide img {
+    width: 100%;
+    height: 650px;
+    object-fit: contain;
+    display: block;
+    background: #000;
+}
+
+.media-caption {
+    width: 100%;
+    padding: 14px 18px;
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+    color: var(--text);
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Navigation arrows */
+
+.media-carousel-controls {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.media-carousel-button {
+    width: 46px;
+    height: 46px;
+    border: 1px solid var(--line);
+    background: rgba(18, 21, 26, 0.9);
+    color: var(--text);
+    font-size: 22px;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: 0.2s ease;
+}
+
+.media-carousel-button:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* Navigation dots */
+
+.media-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 0 0;
+}
+
+.media-dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: var(--muted);
+    opacity: 0.45;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.media-dot.active {
+    background: var(--accent);
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* =========================
+   MEDIA GALLERY RESPONSIVE
+   ========================= */
+
+@media (max-width: 900px) {
+    .media-slide img {
+        height: 500px;
+    }
+}
+
+@media (max-width: 600px) {
+    .media-slide img {
+        height: 350px;
+    }
+
+    .media-carousel-button {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .media-carousel-controls {
+        padding: 10px;
+    }
+}
