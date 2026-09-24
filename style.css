@@ -1278,18 +1278,21 @@ a.game-card .game-content {
    GAUNTLET CARD IMAGE
    ========================= */
 
-.game-grid .game-card:first-child .game-image {
+.game-grid a.game-card[href="/Games/gauntlet.html"] .game-image {
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding: 16px;
+    padding: 20px;
 }
 
-.game-grid .game-card:first-child .game-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
+.game-grid a.game-card[href="/Games/gauntlet.html"] .game-image img {
+    width: auto !important;
+    height: auto !important;
+    max-width: 90% !important;
+    max-height: 90% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    transform: none !important;
     display: block;
 }
