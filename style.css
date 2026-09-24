@@ -1273,3 +1273,23 @@ a.game-card .game-content {
     }
 
 }
+
+/* =========================
+   GAUNTLET CARD IMAGE
+   ========================= */
+
+.game-grid .game-card:first-child .game-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 16px;
+}
+
+.game-grid .game-card:first-child .game-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+}
